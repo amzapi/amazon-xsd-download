@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Result">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="query" type="xs:string" minOccurs="0"/>
+                <xs:element name="Node" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="browseNodeId" type="xs:string" />
+                            <xs:element name="browseNodeAttributes">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="attribute" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute type="xs:string" name="name" use="required"/>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute type="xs:integer" name="count" /> 
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="browseNodeName" type="xs:string" />
+                            <xs:element name="browseNodeStoreContextName" type="xs:string" />
+                            <xs:element name="browsePathById" type="xs:string" />
+                            <xs:element name="browsePathByName" type="xs:string" />
+                            <xs:element name="hasChildren" type="xs:boolean" />
+                            <xs:element name="childNodes">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:string" maxOccurs="unbounded" minOccurs="0" />
+                                    </xs:sequence>    
+                                    <xs:attribute name="count" type="xs:integer" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="productTypeDefinitions" type="xs:string" />
+                            <xs:element name="refinementsInformation">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="refinementName" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType mixed="true">
+                                                <xs:sequence>
+                                                    <xs:element name="refinementField" maxOccurs="unbounded" minOccurs="0">
+                                                        <xs:complexType mixed="true">
+                                                            <xs:sequence>
+                                                                <xs:element type="xs:string" name="acceptedValues" minOccurs="0"/>
+                                                                <xs:element type="xs:string" name="hasModifier" minOccurs="0"/>
+                                                                <xs:element type="xs:string" name="modifiers" minOccurs="0"/>
+                                                                <xs:element type="xs:string" name="refinementAttribute" minOccurs="0"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute type="xs:string" name="name" use="required"/>
+                                           </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute type="xs:integer" name="count"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>    
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
